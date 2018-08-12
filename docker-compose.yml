@@ -1,0 +1,8 @@
+version: "3.3"
+
+services:
+  univ_cms_mongodb:
+    image: mongo:3.4
+    container_name: univ_cms_mongodb
+    ports:
+      - "27017:27017"

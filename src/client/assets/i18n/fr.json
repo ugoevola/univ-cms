@@ -1,0 +1,18 @@
+{
+  "page" : {
+    "login" : {
+      "title" : "Login",
+      "form" : {
+        "email" : "Email",
+        "password" : "Password"
+      }
+    },
+    "home" : {
+      "title" : "Univ CMS"
+    }
+  },
+  "validations" : {
+    "email" : "Please write a correct email",
+    "required" : "This field is required"
+  }
+}

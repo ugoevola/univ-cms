@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1534070235793" clover="3.2.0">
+  <project timestamp="1534070235793" name="All files">
+    <metrics statements="24" coveredstatements="22" conditionals="38" coveredconditionals="24" methods="14" coveredmethods="13" elements="76" coveredelements="59" complexity="0" loc="24" ncloc="24" packages="1" files="2" classes="2">
+      <file name="home.controller.ts" path="C:\workspace\WS\WS_UNI_CMS\uni-cms\src\server\app\routes\home.controller.ts">
+        <metrics statements="11" coveredstatements="10" conditionals="29" coveredconditionals="16" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="cond" truecount="2" falsecount="1"/>
+        <line num="2" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="3" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="5" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="7" count="1" type="cond" truecount="2" falsecount="1"/>
+        <line num="8" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+      <file name="page.controller.spec.ts" path="C:\workspace\WS\WS_UNI_CMS\uni-cms\src\server\app\routes\page.controller.spec.ts">
+        <metrics statements="13" coveredstatements="12" conditionals="9" coveredconditionals="8" methods="11" coveredmethods="10"/>
+        <line num="1" count="1" type="cond" truecount="2" falsecount="1"/>
+        <line num="2" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+    </metrics>
+  </project>
+</coverage>
