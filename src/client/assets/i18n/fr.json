@@ -5,6 +5,11 @@
       "form" : {
         "email" : "Email",
         "password" : "Password"
+      },
+      "notifications": {
+        "success" : "Welcome to Univ CMS",
+        "badcrendential" : "Bad credential",
+        "connection-problem" : "An error occured while trying to contact authentication server"
       }
     },
     "home" : {

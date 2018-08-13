@@ -10,17 +10,17 @@ export class LoginService {
   constructor(private http: HttpClient, private userStorage: UserStore) {
   }
 
-  login(credential: { email: string, password: string }): Promise<boolean> {
-    return this.http.post('/auth/authenticate', credential, { responseType: 'text' })
-      .pipe(share())
-      .toPromise().then((token: any) => {
-        this.userStorage.setToken(token);
-        return true;
-      }).catch((err) => {
-        if (err.status !== HttpStatus.UNAUTHORIZED) {
-          // notifier probleme connexion
-        }
-        return false;
-      });
+  async login(credential: { email: string, password: string }): Promise<boolean> {
+    try {
+      const token = await this.http.post('/auth/authenticate', credential, { responseType: 'text' })
+        .pipe(share()).toPromise();
+      this.userStorage.setToken(token);
+      return true;
+    } catch (err) {
+      if (err.status !== HttpStatus.UNAUTHORIZED) {
+        throw err;
+      }
+      return false;
+    }
   }
 }

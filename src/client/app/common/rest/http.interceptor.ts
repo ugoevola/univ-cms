@@ -12,17 +12,13 @@ import * as HttpStatus from 'http-status-codes';
 @Injectable()
 export class InexysHttpInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router,
-    private inexysNotificationService: InexysNotificationService,
-    private userStore: UserStore,
-    private errorHandler: ErrorHandler) {
+  constructor(private router: Router, private userStore: UserStore, private errorHandler: ErrorHandler) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = this.addAuthentication(req);
     return next.handle(req).pipe(tap(evt => {
       if (evt instanceof HttpResponse) {
-        this.inexysNotificationService.showSuccess('Request ' + evt.status);
         if (evt.status === HttpStatus.UNAUTHORIZED) {
           // 401 on redirigine sur la page de login
           this.router.navigateByUrl('/login');

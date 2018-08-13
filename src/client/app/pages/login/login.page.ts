@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { LoginService } from './login.service';
 import { InexysNotificationService } from '../../common/ngtools/notification/notification.service';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   providers: [LoginService]
 })
 export class LoginPage implements OnInit {
+
+  @HostBinding('class') class = 'flex-column';
 
   loginForm: FormGroup;
 
@@ -26,16 +28,19 @@ export class LoginPage implements OnInit {
     });
   }
 
-  submit() {
+  async submit() {
     if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value).then((logged) => {
+      try {
+        const logged = await this.loginService.login(this.loginForm.value);
         if (logged) {
-          this.notificationService.showSuccess('Login successfull');
-          this.router.navigateByUrl('/home');
+          this.notificationService.showSuccess('page.login.notifications.success');
+          this.router.navigateByUrl('/app');
         } else {
-          this.notificationService.showWarning('Bad credential');
+          this.notificationService.showWarning('page.login.notifications.badcrendential');
         }
-      });
+      } catch (err) {
+        this.notificationService.showWarning('page.login.notifications.connection-problem');
+      }
     }
   }
 }

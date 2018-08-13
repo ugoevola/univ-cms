@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Page } from '@shared/interface/page.int';
 
 @Component({
   selector: 'univ-menu',
@@ -7,10 +6,7 @@ import { Page } from '@shared/interface/page.int';
 })
 export class MenuComponent {
 
-  page: Page;
-
   constructor() {
-    this.page.name = 'Page dto';
   }
 
 }
