@@ -1,4 +1,4 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext, HttpException, HttpStatus } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import * as lodash from 'lodash';
 
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const user = request.user;
     if (!user && authenticate) {
-      return false;
+        throw new HttpException('', HttpStatus.UNAUTHORIZED);
     }
     if (!lodash.isEmpty(roles)) {
       return this.hasRoleOneOfRoles(user, roles);

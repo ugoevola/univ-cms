@@ -2,7 +2,6 @@ import { ApiModelProperty } from '@nestjs/swagger';
 import { IsString, IsDefined, IsDate } from 'class-validator';
 import { Type, Transform } from 'class-transformer';
 import { ObjectID } from 'mongodb';
-import { ContentDto } from './content.dto';
 import { Page } from '@shared/interface/page.int';
 
 export class PageDto implements Page {
@@ -11,6 +10,7 @@ export class PageDto implements Page {
   @Transform((id: string) =>  new ObjectID(id), {toClassOnly : true})
   _id?: ObjectID;
 
+  @ApiModelProperty()
   @IsString()
   reference?: string;
 
@@ -28,6 +28,4 @@ export class PageDto implements Page {
   @Type(() => Date)
   @IsDate()
   updatedOn?: Date;
-
-  content?: ContentDto;
 }

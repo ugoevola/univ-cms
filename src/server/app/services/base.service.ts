@@ -1,11 +1,12 @@
 import { Repository, ObjectID } from 'typeorm';
 import { TechnicalException } from '../common/exception/technical.exception';
+import { IMongoModel } from '@repository/schema/mongo-base.schema';
 
-export abstract class BaseService<E> {
+export abstract class BaseService<E extends IMongoModel> {
 
   constructor(private repository: Repository<any>) { }
 
-  async create(entity: any): Promise<any> {
+  async create(entity: E): Promise<E> {
     try {
       entity.createdOn = new Date();
       const insertResult = await this.repository.insert(entity);
@@ -16,7 +17,7 @@ export abstract class BaseService<E> {
     }
   }
 
-  async update(reference: string, entity: any): Promise<E> {
+  async update(reference: string, entity: E): Promise<E> {
     entity.updatedOn = new Date();
     entity.reference = reference;
     try {
@@ -30,6 +31,10 @@ export abstract class BaseService<E> {
   async delete(reference: string): Promise<boolean> {
     const result = await this.repository.delete(this.condition('reference', reference));
     return !!result;
+  }
+
+  async listAll(): Promise<Array<E>> {
+    return await this.repository.find({});
   }
 
   findById(_id: ObjectID) {

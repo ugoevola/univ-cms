@@ -7,9 +7,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { MainRoutingModule } from './routes/main.router';
-import { AppRoutingModule } from './routes/app.router';
 import { CmsErrorHandler } from './common/error.handler';
+import { MainRoutingModule } from './main.router';
+import { AppRoutingModule } from './pages/app.router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/');

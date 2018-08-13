@@ -1,6 +1,6 @@
-import { ObjectID, ObjectLiteral } from 'typeorm';
+import { ObjectID, ObjectLiteral, DeepPartial } from 'typeorm';
 
-export interface IMongoModel extends ObjectLiteral {
+export interface IMongoModel extends ObjectLiteral, DeepPartial<any> {
   _id?: ObjectID;
   reference?: string;
   createdOn?: Date;

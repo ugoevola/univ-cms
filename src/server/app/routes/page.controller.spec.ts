@@ -1,7 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HomeController } from './home.controller';
-import { RoutesModule } from '../routes/routes.modules';
-import { AppModule } from '../app.module';
 
 describe('PageController', () => {
   let app: TestingModule;

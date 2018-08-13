@@ -3,10 +3,11 @@ import { ApiUseTags } from '@nestjs/swagger';
 import { PageService } from '@services/page.service';
 import { CustomValidationPipe } from '@common/validations/custom-validation.pipe';
 import { PageDto } from '../dto/page.dto';
+import { Authenticate } from '../security/guards/authenticate.decator';
 
 @ApiUseTags('page')
 @Controller('page')
-// @Authenticate()
+@Authenticate()
 export class PageController {
 
   constructor(private readonly pageService: PageService) {
@@ -35,6 +36,13 @@ export class PageController {
     if (!deleteResult) {
       throw new NotFoundException(`No page with reference ${reference} found`);
     }
+  }
+
+  @Get('list')
+  @HttpCode(HttpStatus.OK)
+  public async list(): Promise<Array<PageDto>> {
+    const pages = await this.pageService.listAll();
+    return pages;
   }
 
   @Get(':reference')

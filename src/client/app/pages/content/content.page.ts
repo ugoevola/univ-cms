@@ -1,13 +1,12 @@
 import { Component, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'content-manager',
-  templateUrl: './content-manager.page.html'
+  selector: 'content-page',
+  templateUrl: './content.page.html'
 })
-export class ContentManagerComponent {
+export class ContentPage {
 
   @HostBinding('class') class = 'flex-column';
-  formOrTemplate = 'form';
 
   constructor() {}
 }

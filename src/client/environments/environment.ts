@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   SENTRY_ACTIVATED: true,
-  AUTH_TOKEN_NAME : 'cms-auth-token'
+  AUTH_TOKEN_NAME : 'authorization'
 };
 
 /*

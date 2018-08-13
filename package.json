@@ -11,7 +11,7 @@
     "lint": "ng run univ-cms-client:lint --fix",
     "e2e": "ng e2e",
     "e2e:watch": "watch \"ng e2e -s false\" src e2e --wait=1",
-    "server:lint" : "tslint --project tsconfig.server.json --fix",
+    "server:lint": "tslint --project tsconfig.server.json --fix",
     "server:build": "./node_modules/.bin/tsc -p tsconfig.server.json",
     "server:start": "node -r ./tsconfig-paths.server.bootstrap.js ./dist/server/app/main.js",
     "server:test:unit": "node_modules/.bin/jest --colors --config=./jest.config.js --runInBand --coverage",
@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
-    "@asi-ngtools/lib": "^6.0.0-rc4",
+    "@asi-ngtools/lib": "^6.0.0-rc8",
     "@nestjs/common": "^5.0.0",
     "@nestjs/core": "^5.0.0",
     "@nestjs/passport": "^1.1.0",
@@ -55,7 +55,6 @@
     "reflect-metadata": "^0.1.12",
     "shortid": "^2.2.12",
     "typeorm": "^0.2.7",
-    "typescript": "^2.8.0",
     "url-join": "^4.0.0",
     "winston": "^2.4.0",
     "zone.js": "^0.8.26"
@@ -93,7 +92,7 @@
     "tsconfig-paths": "^3.1.1",
     "tsconfig-paths-jest": "0.0.1",
     "tslint": "~5.9.1",
-    "typescript": "~3.0.1",
+    "typescript": "^2.7.2",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.13",
     "webpack-node-externals": "^1.6.0"
@@ -105,7 +104,7 @@
       "ts"
     ],
     "rootDir": "src",
-    "testRegex": ".spec.ts$",
+    "testRegex": "src/server/app.*spec.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },

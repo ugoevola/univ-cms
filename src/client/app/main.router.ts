@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPage } from '../pages/login/login.page';
-import { CmsCommonModule } from '../common/cms-common.module';
+import { LoginPage } from './pages/login/login.page';
+import { CmsCommonModule } from './common/cms-common.module';
 
 const mainRouter: Routes = [
   { path: 'login', component: LoginPage },

@@ -3,7 +3,6 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse } from '@angular/common/http';
 import { Injectable, ErrorHandler } from '@angular/core';
-import { InexysNotificationService } from '../ngtools/notification/notification.service';
 import { environment } from '@environments/environment';
 import { UserStore } from '../store/user.store';
 import { Router } from '@angular/router';
@@ -19,13 +18,14 @@ export class InexysHttpInterceptor implements HttpInterceptor {
     req = this.addAuthentication(req);
     return next.handle(req).pipe(tap(evt => {
       if (evt instanceof HttpResponse) {
-        if (evt.status === HttpStatus.UNAUTHORIZED) {
-          // 401 on redirigine sur la page de login
-          this.router.navigateByUrl('/login');
-        }
+        // DO SOMETHING
       }
     }), catchError((err) => {
-      this.errorHandler.handleError(err);
+      if (err.status === HttpStatus.UNAUTHORIZED) {
+        this.router.navigateByUrl('/login');
+      } else {
+        this.errorHandler.handleError(err);
+      }
       return observableThrowError(err);
     }));
   }
@@ -34,10 +34,10 @@ export class InexysHttpInterceptor implements HttpInterceptor {
     const headers: any = {};
     const authToken = this.userStore.getToken();
     if (authToken) {
-      headers[environment.AUTH_TOKEN_NAME] =
-        req = req.clone({
-          setHeaders: headers
-        });
+      headers[environment.AUTH_TOKEN_NAME] = authToken;
+      req = req.clone({
+        setHeaders: headers
+      });
     }
     return req;
   }

@@ -17,7 +17,7 @@ export class LoginService {
       this.userStorage.setToken(token);
       return true;
     } catch (err) {
-      if (err.status !== HttpStatus.UNAUTHORIZED) {
+      if (err.status !== HttpStatus.FORBIDDEN) {
         throw err;
       }
       return false;
