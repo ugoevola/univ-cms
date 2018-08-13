@@ -25,7 +25,7 @@
       "@services/*" : ["./server/app/services/*"],
       "@repository/*" : ["./server/app/repository/*"],
       "@config/*" : ["./server/app/config/*"],
-      "@environments/*": ["./client/environments/*"],
+      "@environments/*": ["./client/environments/*"]
     }
   }
 }

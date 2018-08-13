@@ -1,8 +1,8 @@
 const request = require('supertest');
 import { HttpStatus } from '@nestjs/common';
-import { TestServer } from '../../test/test-server';
+import { TestServer } from '../test-server';
 
-import { PageDto } from '../../../shared/dto/page.dto';
+import { PageDto } from '../../app/dto/page.dto';
 
 const adminAccount = require('../resources/account/admin.json');
 

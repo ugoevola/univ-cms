@@ -9,4 +9,5 @@ module.exports = {
     "^.+\\.(t|j)s$": "ts-jest"
   },
   moduleNameMapper,
+  coverageDirectory: "../coverage"
 }

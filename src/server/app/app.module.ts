@@ -15,7 +15,7 @@ import { Config } from './config/config';
     type: 'mongodb',
     host: Config.get().MONGO_URL,
     port: Config.get().MONGO_PORT,
-    database : 'asi-cms',
+    database : 'univ-cms',
     entities: ['src/**/*.entity.ts'],
     synchronize: true,
   })],

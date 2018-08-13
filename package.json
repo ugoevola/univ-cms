@@ -14,7 +14,8 @@
     "server:build": "./node_modules/.bin/tsc -p tsconfig.server.json",
     "server:start": "node -r ./tsconfig-paths.server.bootstrap.js ./dist/server/app/main.js",
     "server:test:unit": "node_modules/.bin/jest --colors --config=./jest.config.js --runInBand --coverage",
-    "server:test:e2e": "node_modules/.bin/jest --colors --config=./jest-e2e.config.js --runInBand --coverage"
+    "server:test:e2e": "node_modules/.bin/jest --colors --config=./jest-e2e.config.js --runInBand --coverage",
+    "server:test" : "node_modules/.bin/jest --colors --config=./jest-global.config.js --runInBand --coverage"
   },
   "private": true,
   "dependencies": {
@@ -107,6 +108,6 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "coverageDirectory": "./coverage"
+    "coverageDirectory": "../coverage"
   }
 }
