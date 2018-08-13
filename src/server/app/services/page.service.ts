@@ -6,7 +6,7 @@ import { FunctionalException } from '../common/exception/functional.exception';
 import * as shortid from 'shortid';
 
 @Injectable()
-export class PageService extends BaseService<PageEntity>{
+export class PageService extends BaseService<PageEntity> {
 
   constructor(readonly pageRepository: PageMongoRepository) {
     super(pageRepository.getBaseRepository());

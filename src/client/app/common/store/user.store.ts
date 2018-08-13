@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AsiLocalStorageService } from '@asi-ngtools/lib'
+import { AsiLocalStorageService } from '@asi-ngtools/lib';
 import { environment } from '@environments/environment';
 
 @Injectable()

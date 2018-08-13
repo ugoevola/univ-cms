@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { LoginService } from './login.service';
 import { InexysNotificationService } from '../../common/ngtools/notification/notification.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   providers: [LoginService]
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
 

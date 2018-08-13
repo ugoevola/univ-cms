@@ -1,12 +1,12 @@
 
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse } from "@angular/common/http";
-import { Injectable, ErrorHandler } from "@angular/core";
-import { InexysNotificationService } from "../ngtools/notification/notification.service";
-import { environment } from "@environments/environment";
-import { UserStore } from "../store/user.store";
-import { Router } from "@angular/router";
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse } from '@angular/common/http';
+import { Injectable, ErrorHandler } from '@angular/core';
+import { InexysNotificationService } from '../ngtools/notification/notification.service';
+import { environment } from '@environments/environment';
+import { UserStore } from '../store/user.store';
+import { Router } from '@angular/router';
 import * as HttpStatus from 'http-status-codes';
 
 @Injectable()

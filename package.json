@@ -1,6 +1,6 @@
 {
   "name": "uni-cms",
-  "version": "1.0.0",
+  "version": "1.0.0-SNAPSHOT",
   "author": "xrobert",
   "license": "MIT",
   "scripts": {
@@ -8,14 +8,15 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint --type-check",
+    "lint": "ng run univ-cms-client:lint --fix",
     "e2e": "ng e2e",
     "e2e:watch": "watch \"ng e2e -s false\" src e2e --wait=1",
+    "server:lint" : "tslint --project tsconfig.server.json --fix",
     "server:build": "./node_modules/.bin/tsc -p tsconfig.server.json",
     "server:start": "node -r ./tsconfig-paths.server.bootstrap.js ./dist/server/app/main.js",
     "server:test:unit": "node_modules/.bin/jest --colors --config=./jest.config.js --runInBand --coverage",
     "server:test:e2e": "node_modules/.bin/jest --colors --config=./jest-e2e.config.js --runInBand --coverage",
-    "server:test" : "node_modules/.bin/jest --colors --config=./jest-global.config.js --runInBand --coverage"
+    "server:test": "node_modules/.bin/jest --colors --config=./jest-global.config.js --runInBand --coverage"
   },
   "private": true,
   "dependencies": {

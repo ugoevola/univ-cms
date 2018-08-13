@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './notification.component.html',
 })
 export class NotificationComponent {
-  public message : string = "";
+  public message = '';
 
-  constructor(){
+  constructor() {
   }
 }

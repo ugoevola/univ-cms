@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "asi-cms-client": {
+    "univ-cms-client": {
       "root": "",
       "sourceRoot": "src/client",
       "projectType": "application",
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "asi-cms-client:build"
+            "browserTarget": "univ-cms-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "asi-cms-client:build:production"
+              "browserTarget": "univ-cms-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "asi-cms-client:build"
+            "browserTarget": "univ-cms-client:build"
           }
         },
         "test": {
@@ -97,7 +97,7 @@
         }
       }
     },
-    "asi-cms-client-e2e": {
+    "univ-cms-client-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -105,11 +105,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "asi-cms-client:serve"
+            "devServerTarget": "univ-cms-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "asi-cms-client:serve:production"
+              "devServerTarget": "univ-cms-client:serve:production"
             }
           }
         },
@@ -125,5 +125,5 @@
       }
     }
   },
-  "defaultProject": "asi-cms-client"
+  "defaultProject": "univ-cms-client"
 }

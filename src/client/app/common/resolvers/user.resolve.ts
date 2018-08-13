@@ -1,6 +1,6 @@
-import { Resolve } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Resolve } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { share } from 'rxjs/operators';
 
 @Injectable()

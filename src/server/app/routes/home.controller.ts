@@ -8,7 +8,7 @@ export class HomeController {
   @Get('')
   @HttpCode(HttpStatus.OK)
   public get() {
-    return "Hello world !";
+    return 'Hello world !';
   }
 
   @Get('me')
@@ -17,6 +17,6 @@ export class HomeController {
     return {
       name: 'admin',
       role : 'ADMIN'
-    }
+    };
   }
 }

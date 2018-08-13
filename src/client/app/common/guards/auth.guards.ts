@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { CanActivate } from "@angular/router";
-import { UserStore } from "../store/user.store";
+import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { UserStore } from '../store/user.store';
 import * as lodash from 'lodash';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Injectable()
 export class EnsureUserAuthGuard implements CanActivate {
@@ -15,7 +15,7 @@ export class EnsureUserAuthGuard implements CanActivate {
     if (!lodash.isEmpty(this.userStore.getToken())) {
       return true;
     } else {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
       return false;
     }
   }

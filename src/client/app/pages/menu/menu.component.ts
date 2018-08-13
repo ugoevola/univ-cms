@@ -10,7 +10,7 @@ export class MenuComponent {
   page: Page;
 
   constructor() {
-    this.page.name = "Page dto";
+    this.page.name = 'Page dto';
   }
 
 }

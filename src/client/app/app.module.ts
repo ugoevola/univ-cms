@@ -14,7 +14,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { MenuComponent } from './pages/menu/menu.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, "/assets/i18n/");
+  return new TranslateHttpLoader(http, '/assets/i18n/');
 }
 
 @NgModule({

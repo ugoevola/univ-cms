@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import * as HttpStatus from 'http-status-codes';
-import { UserStore } from "../../common/store/user.store";
+import { UserStore } from '../../common/store/user.store';
 import { share } from 'rxjs/operators';
 
 @Injectable()

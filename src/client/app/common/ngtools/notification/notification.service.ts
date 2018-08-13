@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { AsiNotificationService } from "@asi-ngtools/lib";
-import { AsiNotificationPosition } from "@asi-ngtools/lib";
-import { AsiNotificationType } from "@asi-ngtools/lib";
-import { NotificationComponent } from "./notification.component";
+import { Injectable } from '@angular/core';
+import { AsiNotificationService } from '@asi-ngtools/lib';
+import { AsiNotificationPosition } from '@asi-ngtools/lib';
+import { AsiNotificationType } from '@asi-ngtools/lib';
+import { NotificationComponent } from './notification.component';
 
 @Injectable()
 export class InexysNotificationService {
