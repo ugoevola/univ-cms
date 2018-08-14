@@ -1,5 +1,5 @@
 import { IMongoModel } from './mongo-base.schema';
-import { Column, Entity, ObjectID, ObjectIdColumn, Index, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ObjectID, ObjectIdColumn, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class ContentEntity implements IMongoModel {

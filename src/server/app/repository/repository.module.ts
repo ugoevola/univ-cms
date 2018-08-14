@@ -11,8 +11,7 @@ const repositories  = [
 ];
 
 @Module({
-  imports: [TypeOrmModule.forFeature([PageEntity]),
-  TypeOrmModule.forFeature([ContentEntity])],
+  imports: [TypeOrmModule.forFeature([PageEntity, ContentEntity])],
   controllers: [],
   providers: [...repositories],
   exports : [...repositories],

@@ -16,7 +16,7 @@ import { Config } from './config/config';
     host: Config.get().MONGO_URL,
     port: Config.get().MONGO_PORT,
     database : 'univ-cms',
-    entities: ['src/**/*.entity.ts'],
+    entities: [`${__dirname}/**/*.entity{.ts,.js}`],
     synchronize: true,
   })],
   controllers: [],
