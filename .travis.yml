@@ -3,6 +3,7 @@ services: mongodb
 node_js:
   - "8"
 before_install:
+  - npm i -g npm@latest
   - npm i
 install:
   - npm run server:lint
