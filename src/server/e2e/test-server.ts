@@ -6,8 +6,6 @@ import { AuthService } from '../app/security/auth.service';
 import { AuthServiceMock } from './mock/auth.service.mock';
 import { Connection } from 'typeorm';
 
-const account = require('./resources/account/admin.json');
-
 /**
  * Classe permettant d'avoir une instance unique du serveur
  * pour la gestion des tests

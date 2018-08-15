@@ -22,7 +22,7 @@ export class PageController {
   }
 
   @Put(':reference')
-  @HttpCode(HttpStatus.ACCEPTED)
+  @HttpCode(HttpStatus.OK)
   @UsePipes(new CustomValidationPipe())
   public async update(@Param('reference') reference: string, @Body() pageDto: PageDto) {
     const pageUpdated = await this.pageService.update(reference, pageDto);
@@ -30,7 +30,7 @@ export class PageController {
   }
 
   @Delete(':reference')
-  @HttpCode(HttpStatus.ACCEPTED)
+  @HttpCode(HttpStatus.OK)
   public async delete(@Param('reference') reference: string) {
     const deleteResult = await this.pageService.delete(reference);
     if (!deleteResult) {
