@@ -1,7 +1,7 @@
 const request = require('supertest');
 import { HttpStatus } from '@nestjs/common';
 import { TestServer } from '../test-server';
-
+import * as lodash from 'lodash';
 import { PageDto } from '../../app/dto/page.dto';
 
 import { default as adminAccount } from '../resources/account/admin';
@@ -44,6 +44,19 @@ describe('e2e - PageController', () => {
     createdPage = res.body;
   });
 
+  it('should not create page with the same name', async () => {
+    const newPage = lodash.cloneDeep(createdPage);
+    delete newPage._id;
+    delete newPage.reference;
+
+    const res = await request(TestServer.getHttpServer()).post('/api/page')
+      .set('auth', JSON.stringify(adminAccount))
+      .send(newPage);
+
+    expect(res.status).toEqual(HttpStatus.CONFLICT);
+    expect(res.body.code).toEqual('already_exist');
+  });
+
   it('should modify page', async () => {
     createdPage.name = 'testModifiy';
     const res = await request(TestServer.getHttpServer()).put(`/api/page/${createdPage.reference}`)
@@ -76,6 +89,14 @@ describe('e2e - PageController', () => {
       .set('auth', JSON.stringify(adminAccount));
 
     expect(res.status).toEqual(HttpStatus.NOT_FOUND);
+  });
+
+  it('should liste page', async () => {
+    const res = await request(TestServer.getHttpServer()).get(`/api/page/list`)
+      .set('auth', JSON.stringify(adminAccount));
+
+    expect(res.status).toEqual(HttpStatus.OK);
+    expect(res.body.length).toEqual(1);
   });
 
   it('should delete page', async () => {

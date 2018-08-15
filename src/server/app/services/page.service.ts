@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import { PageMongoRepository } from '../repository/repositories/page.repository';
 import { BaseService } from './base.service';
 import { PageEntity } from '../repository/schema/page.entity';
@@ -15,7 +15,8 @@ export class PageService extends BaseService<PageEntity> {
   async create(page: PageEntity) {
     const existingPage = await this.pageRepository.getBaseRepository().findOne({name : page.name });
     if (existingPage) {
-      throw new FunctionalException('already_exist', `A page with the same name already exist :  ${existingPage.name}`);
+      throw new FunctionalException('already_exist',
+        `A page with the same name already exist :  ${existingPage.name}`, HttpStatus.CONFLICT);
     }
     page.reference = shortid.generate();
     return super.create(page);

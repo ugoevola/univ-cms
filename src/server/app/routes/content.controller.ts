@@ -22,7 +22,7 @@ export class ContentController {
   }
 
   @Put(':reference')
-  @HttpCode(HttpStatus.ACCEPTED)
+  @HttpCode(HttpStatus.OK)
   @UsePipes(new CustomValidationPipe())
   public async update(@Param('reference') reference: string, @Body() contentDto: ContentDto) {
     const pageUpdated = await this.contentService.update(reference, contentDto);
@@ -30,11 +30,11 @@ export class ContentController {
   }
 
   @Delete(':reference')
-  @HttpCode(HttpStatus.ACCEPTED)
+  @HttpCode(HttpStatus.OK)
   public async delete(@Param('reference') reference: string) {
     const deleteResult = await this.contentService.delete(reference);
     if (!deleteResult) {
-      throw new NotFoundException(`No page with reference ${reference} found`);
+      throw new NotFoundException(`No content with reference ${reference} found`);
     }
   }
 
