@@ -10,3 +10,5 @@ install:
   - npm run server:build
 script:
   - npm run server:test
+after_success:
+  - npm run server:coveralls
