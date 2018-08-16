@@ -45,7 +45,7 @@ const appRouter: Routes = [
     TemplateManagerComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRouter, { useHash: true }),
+    RouterModule.forRoot(appRouter),
     CmsCommonModule
   ],
   exports: [

@@ -11,6 +11,8 @@ export class Config {
     MONGO_URL: string,
     MONGO_PORT: number,
     SERVER_PORT: string,
+    CLIENT_PORT: string;
+    CLIENT_ACTIVATED: boolean;
     SERVER_PATH: string,
     LOG_LEVEL: string,
     SWAGGER_ACTIVATED: string,

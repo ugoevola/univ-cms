@@ -2,14 +2,17 @@
   "extends": "../../tsconfig.client.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "es2015",
+    "module": "commonjs",
     "types": [
       "node"
     ]
   },
   "exclude": [
-    "src/test.ts",
+    "test.ts",
     "**/*.spec.ts",
     "./assets/demo/**/*"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "app/root.server.module#RootServerModule"
+  }
 }

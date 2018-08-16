@@ -3,10 +3,18 @@ import { NestFactory } from '@nestjs/core';
 import { WinLogger } from './common/logger/winlogger';
 import { Config } from './config/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ClientServer } from './client.server';
 
 const logger = WinLogger.get('main');
 
 async function bootstrap() {
+
+  let clientStarted = false;
+  if (Config.get().CLIENT_ACTIVATED) {
+    await ClientServer.bootstrap();
+    clientStarted = true;
+  }
+
   const app = await NestFactory.create(AppModule, {
     logger : WinLogger.get('nest'),
   });
@@ -30,9 +38,12 @@ async function bootstrap() {
   app.setGlobalPrefix(`${Config.get().SERVER_PATH}`);
 
   await app.listen(Config.get().SERVER_PORT);
+  if (clientStarted) {
+    logger.info(`Client server listening on http://localhost:${Config.get().CLIENT_PORT}`);
+  }
+  logger.info(`Server started on port ${serverPort}`);
   if (swaggerActivated) {
     logger.info('Swagger is activated and is accessible on /api/swagger');
   }
-  logger.info(`Server started on port ${serverPort}`);
 }
 bootstrap();

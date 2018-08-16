@@ -6,6 +6,7 @@ import { UserStore } from './store/user.store';
 import { EnsureUserAuthGuard } from './guards/auth.guards';
 import { UserResolve } from './resolvers/user.resolve';
 import { CommonModule } from '@angular/common';
+import { UniversalService } from './universal/universal.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { CommonModule } from '@angular/common';
     NgToolsModule,
     FlexLayoutModule
   ],
-  providers: [UserStore, EnsureUserAuthGuard, UserResolve]
+  providers: [UserStore, EnsureUserAuthGuard, UserResolve, UniversalService]
 })
 export class CmsCommonModule {
 

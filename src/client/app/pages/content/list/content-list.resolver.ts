@@ -7,7 +7,7 @@ import { ContentWebService } from '@rest/content.webservice';
 @Injectable()
 export class ContentsListResolver implements Resolve<Array<Content>> {
 
-  constructor(private contentWebService:  ContentWebService) {
+  constructor(private contentWebService: ContentWebService) {
   }
 
   resolve(): Observable<Array<Content>> {

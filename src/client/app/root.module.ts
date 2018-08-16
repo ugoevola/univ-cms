@@ -1,8 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, TransferState, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { RootComponent } from './root.component';
 import { CmsCommonModule } from './common/cms-common.module';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -10,10 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { CmsErrorHandler } from './common/error.handler';
 import { MainRoutingModule } from './main.router';
 import { AppRoutingModule } from './pages/app.router';
+import { UniversalService } from './common/universal/universal.service';
+import { TranslateUniversalLoader } from './common/universal/universal.loader';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/assets/i18n/');
-}
+const translateLoader = (transferState: TransferState, universalService: UniversalService, httpClient: HttpClient) => {
+  return new TranslateUniversalLoader(transferState, universalService, httpClient);
+};
+
 
 @NgModule({
   declarations: [
@@ -22,13 +24,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     MainRoutingModule,
     AppRoutingModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'univ-cms' }),
+    BrowserTransferStateModule,
     CmsCommonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+        useFactory: translateLoader,
+        deps: [TransferState, UniversalService, HttpClient]
       }
     }),
   ],

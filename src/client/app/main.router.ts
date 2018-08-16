@@ -13,7 +13,7 @@ const mainRouter: Routes = [
     LoginPage
   ],
   imports: [
-    RouterModule.forRoot(mainRouter, { useHash: true }),
+    RouterModule.forRoot(mainRouter),
     CmsCommonModule
   ],
   exports: [
