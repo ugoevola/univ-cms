@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HomePage } from '../pages/home/home.page';
 import { CmsCommonModule } from '../common/cms-common.module';
 import { EnsureUserAuthGuard } from '../common/guards/auth.guards';
@@ -13,8 +13,10 @@ import { ContentListPage } from './content/list/content-list.page';
 import { ContentManagerPage } from './content/manager/content-manager.page';
 import { FormManagerComponent } from './content/manager/forms/form-manager.component';
 import { ContentsListResolver } from './content/list/content-list.resolver';
+import { LoginPage } from './login/login.page';
 
 const appRouter: Routes = [
+  { path: 'login', component: LoginPage },
   {
     path: 'app', component: AppPage, canActivate: [EnsureUserAuthGuard], resolve: { user: UserResolve },
     children: [
@@ -35,6 +37,7 @@ const appRouter: Routes = [
 @NgModule({
   declarations: [
     AppPage,
+    LoginPage,
     HomePage,
     HeaderComponent,
     MenuComponent,
@@ -45,7 +48,10 @@ const appRouter: Routes = [
     TemplateManagerComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRouter),
+    RouterModule.forRoot(appRouter, {
+      preloadingStrategy: PreloadAllModules,
+      initialNavigation: true
+    }),
     CmsCommonModule
   ],
   exports: [

@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
         const logged = await this.loginService.login(this.loginForm.value);
         if (logged) {
           this.notificationService.showSuccess('page.login.notifications.success');
-          this.router.navigateByUrl('/app');
+          this.router.navigate(['/app']);
         } else {
           this.notificationService.showWarning('page.login.notifications.badcrendential');
         }

@@ -8,13 +8,6 @@ import { ClientServer } from './client.server';
 const logger = WinLogger.get('main');
 
 async function bootstrap() {
-
-  let clientStarted = false;
-  if (Config.get().CLIENT_ACTIVATED) {
-    await ClientServer.bootstrap();
-    clientStarted = true;
-  }
-
   const app = await NestFactory.create(AppModule, {
     logger : WinLogger.get('nest'),
   });
@@ -38,6 +31,13 @@ async function bootstrap() {
   app.setGlobalPrefix(`${Config.get().SERVER_PATH}`);
 
   await app.listen(Config.get().SERVER_PORT);
+
+  let clientStarted = false;
+  if (Config.get().CLIENT_ACTIVATED) {
+    await ClientServer.bootstrap(app);
+    clientStarted = true;
+  }
+
   if (clientStarted) {
     logger.info(`Client server listening on http://localhost:${Config.get().CLIENT_PORT}`);
   }

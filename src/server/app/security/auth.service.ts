@@ -6,7 +6,7 @@ export class AuthService {
 
   constructor(private readonly jwtStrategy: JwtStrategy) { }
 
-  public authenticate(req, next) {
+  public async authenticate(req, next) {
     const jwt: any = this.jwtStrategy;
     jwt.success = (user) => {
       req.user = user;
@@ -14,6 +14,8 @@ export class AuthService {
     };
     jwt.fail = () => next();
     jwt.error = () => next();
-    jwt.authenticate(req, { session: false });
+
+    await jwt.authenticate(req, { session: false });
+    return req.user;
   }
 }

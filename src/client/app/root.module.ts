@@ -1,4 +1,4 @@
-import { BrowserModule, TransferState, BrowserTransferStateModule } from '@angular/platform-browser';
+import { TransferState } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { RootComponent } from './root.component';
 import { CmsCommonModule } from './common/cms-common.module';
@@ -7,7 +7,6 @@ import { TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { CmsErrorHandler } from './common/error.handler';
-import { MainRoutingModule } from './main.router';
 import { AppRoutingModule } from './pages/app.router';
 import { UniversalService } from './common/universal/universal.service';
 import { TranslateUniversalLoader } from './common/universal/universal.loader';
@@ -22,10 +21,7 @@ const translateLoader = (transferState: TransferState, universalService: Univers
     RootComponent
   ],
   imports: [
-    MainRoutingModule,
     AppRoutingModule,
-    BrowserModule.withServerTransition({ appId: 'univ-cms' }),
-    BrowserTransferStateModule,
     CmsCommonModule,
     TranslateModule.forRoot({
       loader: {
@@ -35,8 +31,7 @@ const translateLoader = (transferState: TransferState, universalService: Univers
       }
     }),
   ],
-  providers: [{ provide: ErrorHandler, useClass: CmsErrorHandler }],
-  bootstrap: [RootComponent]
+  providers: [{ provide: ErrorHandler, useClass: CmsErrorHandler }]
 })
 export class RootModule {
   constructor(translate: TranslateService) {

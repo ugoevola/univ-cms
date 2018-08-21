@@ -15,7 +15,7 @@ export class TranslateUniversalLoader implements TranslateLoader {
   public getTranslation(lang: string): Observable<any> {
     return Observable.create((observer: any) => {
       if (this.universalService.isServer()) {
-        const json = JSON.parse(fs.readFileSync(`${this.universalService.getBaseUrl}/assets/i18n/${lang}.json`, 'utf8'));
+        const json = JSON.parse(fs.readFileSync(`${this.universalService.getRootFolder()}/assets/i18n/${lang}.json`, 'utf8'));
         this.transferState.set(key, json);
         observer.next(this.transferState.get(key, null));
         observer.complete();

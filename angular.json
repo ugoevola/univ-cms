@@ -19,6 +19,7 @@
             "main": "src/client/main.ts",
             "polyfills": "src/client/polyfills.ts",
             "tsConfig": "src/client/tsconfig.app.json",
+            "preserveSymlinks": true,
             "assets": [
               "src/client/favicon.ico",
               "src/client/assets"

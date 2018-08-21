@@ -22,7 +22,7 @@ export class InexysHttpInterceptor implements HttpInterceptor {
       }
     }), catchError((err) => {
       if (err.status === HttpStatus.UNAUTHORIZED) {
-        this.router.navigateByUrl('/login');
+        this.router.navigate(['/login']);
       } else {
         this.errorHandler.handleError(err);
       }

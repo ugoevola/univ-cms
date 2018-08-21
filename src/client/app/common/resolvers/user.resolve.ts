@@ -1,18 +1,15 @@
 import { Resolve } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { share } from 'rxjs/operators';
+import { HomeWebService } from '@rest/home.webservice';
 
 @Injectable()
 export class UserResolve implements Resolve<any> {
 
-  constructor(private http: HttpClient) {
+  constructor(private homeWebService: HomeWebService) {
   }
 
-  resolve() {
-    return this.http.get('/api/me').pipe(share()).subscribe((user: any) => {
-      return user;
-    });
+  async resolve() {
+    return await this.homeWebService.me().toPromise();
   }
 
 }

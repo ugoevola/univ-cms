@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { AsiLocalStorageService } from '@asi-ngtools/lib';
 import { environment } from '@environments/environment';
+import { CookiesService } from '@ngx-utils/cookies';
 
 @Injectable()
 export class UserStore {
 
   private user: any;
 
-  constructor(private asiLocalStorage: AsiLocalStorageService) {
+  constructor(private cookies: CookiesService) {
   }
 
   getUser() {
@@ -19,10 +19,10 @@ export class UserStore {
   }
 
   getToken() {
-    return this.asiLocalStorage.getItem(environment.AUTH_TOKEN_NAME);
+    return this.cookies.get(environment.AUTH_TOKEN_NAME);
   }
 
   setToken(token: string) {
-    this.asiLocalStorage.setItem(environment.AUTH_TOKEN_NAME, token);
+    this.cookies.put(environment.AUTH_TOKEN_NAME, token);
   }
 }

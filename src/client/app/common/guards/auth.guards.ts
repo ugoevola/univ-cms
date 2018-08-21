@@ -15,7 +15,7 @@ export class EnsureUserAuthGuard implements CanActivate {
     if (!lodash.isEmpty(this.userStore.getToken())) {
       return true;
     } else {
-      this.router.navigateByUrl('/login');
+      this.router.navigate(['/login']);
       return false;
     }
   }

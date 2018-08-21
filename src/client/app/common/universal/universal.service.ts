@@ -16,11 +16,26 @@ export class UniversalService {
   }
 
   getBaseUrl() {
-    return this.injector.get('request').BASE_URL;
+    if (this.isServer()) {
+      return this.injector.get('request').BASE_URL;
+    } else {
+      return '';
+    }
+  }
+
+  getApiUrl() {
+    return `${this.getBaseUrl()}/api`;
+  }
+
+  getRootFolder() {
+    if (this.isServer()) {
+      return this.injector.get('request').ROOT_FOLDER;
+    } else {
+      return '';
+    }
   }
 
   getRequestParams() {
     return this.injector.get('request');
   }
-
 }

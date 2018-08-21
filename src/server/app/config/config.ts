@@ -13,6 +13,7 @@ export class Config {
     SERVER_PORT: string,
     CLIENT_PORT: string;
     CLIENT_ACTIVATED: boolean;
+    CLIENT_PROXY_ACTIVATED: boolean;
     SERVER_PATH: string,
     LOG_LEVEL: string,
     SWAGGER_ACTIVATED: string,
