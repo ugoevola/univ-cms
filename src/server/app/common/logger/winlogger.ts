@@ -15,7 +15,7 @@ export class WinLogger implements LoggerService {
   }
 
   debug(message: string, params?: any) {
-    this.logger.debug(`[${this.name}]  -  ${message}`, params);
+    this.logger.debug(`[${this.name}] - ${message}`, params);
   }
 
   info(message: string, params?: any) {
@@ -23,14 +23,14 @@ export class WinLogger implements LoggerService {
   }
 
   warn(message: string, params?: any) {
-    this.logger.warn(`[${this.name}]  - ${message}`, params);
+    this.logger.warn(`[${this.name}] - ${message}`, params);
   }
 
   error(message: string, params?: any) {
-    this.logger.error(`[${this.name}]  -  ${message}`, params);
+    this.logger.error(`[${this.name}] - ${message}`, params);
   }
 
   log(message: string) {
-    this.logger.info(`[${this.name}]  -  ${message}`);
+    this.logger.info(`[${this.name}] - ${message}`);
   }
 }

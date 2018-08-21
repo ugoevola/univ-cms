@@ -43,8 +43,8 @@ export class ClientServer {
       const proxies = require('../../../proxy.conf.json');
       for (const proxyName of Object.keys(proxies)) {
         const proxy = proxies[proxyName];
-        this.logger.info(`Add proxy for ${proxyName} to ${proxy.target}`);
-        app.use(proxyName, proxyMiddleware(proxy));
+        proxy.logProvider = () => this.logger;
+        app.use(proxyName, proxyMiddleware(proxyName, proxy));
       }
     }
 

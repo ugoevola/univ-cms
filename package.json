@@ -74,7 +74,7 @@
     "shortid": "^2.2.12",
     "typeorm": "^0.2.7",
     "url-join": "^4.0.0",
-    "winston": "^2.4.0",
+    "winston": "^3.0.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
