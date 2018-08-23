@@ -1,10 +1,10 @@
-import { LoggerInstance } from 'winston';
+import { Logger } from 'winston';
 import { LoggerFactory } from './logger.factory';
 import { LoggerService } from '@nestjs/common';
 
 export class WinLogger implements LoggerService {
 
-  private logger: LoggerInstance;
+  private logger: Logger;
 
   private constructor(private name: string) {
     this.logger = LoggerFactory.get();
