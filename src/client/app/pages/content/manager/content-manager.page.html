@@ -1,6 +1,22 @@
-<div fxLayout="column">
-  <asi-radio-group [(ngModel)]="formOrTemplate" label="Form/Template" labelPosition="left">
-    <asi-radio value="form">Form</asi-radio>
-    <asi-radio value="template">Template</asi-radio>
-  </asi-radio-group>
+<h1> Content Manager </h1>
+
+<asi-panel class="flex-column">
+  <div> Type : {{'enums.contentType.' + content.type | translate }} </div>
+  <div> Content url : {{ '/api/render/' + content.reference}}</div>
+</asi-panel>
+
+<asi-tab-group>
+  <asi-tab label="Edit">
+    <rich-text-editor [(ngModel)]="content.content"></rich-text-editor>
+  </asi-tab>
+  <asi-tab label="Data">
+    <content-data [content]="content" [requests]="requests"></content-data>
+  </asi-tab>
+  <asi-tab label="Preview">
+    <content-preview [content]="content"></content-preview>
+  </asi-tab>
+</asi-tab-group>
+
+<div fxLayout="row" fxLayoutAlign="end">
+  <asi-button (click)="saveContent()">Save</asi-button>
 </div>

@@ -1,13 +1,38 @@
-#univ-header{
-  background-color : @univ-secondary-color;
-  height : 50px;
-  display: flex;
-  flex-direction: row;
+univ-header {
+  #univ-header {
+    background-image: url('../../assets/panel-background.png');
+    background-attachment: fixed;
+    box-shadow: 1px 1px 1px grey;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-  label {
-    margin-left : 15px;
-    margin-top : 15px;
-    color : white;
-    text-align: center;
+    .title-panel {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 15px;
+      img {
+        max-width: 30px;
+        max-height: 30px;
+      }
+      .title {
+        margin-left: 15px;
+        // margin-top: 15px;
+        color: @univ-primary-color;
+        text-align: center;
+      }
+    }
+
+    .userInfo {
+      padding-top: 15px;
+      padding-right: 15px;
+
+      span {
+        color: @univ-primary-color;
+        text-align: center;
+      }
+    }
   }
 }

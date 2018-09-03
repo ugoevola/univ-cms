@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import * as HttpStatus from 'http-status-codes';
 
 @Injectable()
-export class InexysHttpInterceptor implements HttpInterceptor {
+export class UcmsHttpInterceptor implements HttpInterceptor {
 
   constructor(private router: Router, private userStore: UserStore, private errorHandler: ErrorHandler) {
   }

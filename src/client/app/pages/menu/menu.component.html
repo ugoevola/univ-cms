@@ -1,5 +1,19 @@
-<div id="univ-menu" class="univ-menu">
+<div id="univ-menu" class="univ-menu flex-column">
   <asi-menu [vertical]="true">
-      <asi-menu-item [routerLink]="['content']"> content-manager </asi-menu-item>
+    <asi-menu-item [routerLink]="['content']">
+      <asi-fa-icon icon="fab fa-creative-commons-remix" size="2x" label="content-manager" labelPosition="right"></asi-fa-icon>
+      </asi-menu-item>
+      <asi-menu-item [routerLink]="['requests']">
+        <asi-fa-icon icon="fas fa-exchange-alt" size="2x" label="requests" labelPosition="right"></asi-fa-icon>
+      </asi-menu-item>
+    <asi-menu-item [routerLink]="['members']">
+      <asi-fa-icon icon="far fa-user-circle" size="2x" label="members" labelPosition="right"></asi-fa-icon>
+    </asi-menu-item>
+    <asi-menu-item [routerLink]="['help']">
+      <asi-fa-icon icon="far fa-question-circle" size="2x" label="help" labelPosition="right"></asi-fa-icon>
+    </asi-menu-item>
   </asi-menu>
 </div>
+
+
+

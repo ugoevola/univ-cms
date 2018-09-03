@@ -1,0 +1,40 @@
+<div class="dialog-header">
+  {{'page.content.list.new.modal.create' | translate }}
+</div>
+
+<form class="dialog-content" [formGroup]="newContentForm" (ngSubmit)="createContent()">
+
+  <!-- Type -->
+  <div class="asi-container">
+    <asi-select label="page.content.list.new.modal.type" [data]="contentTypes" formControlName="type">
+      <asi-empty *emptyDef="let data">Please select a value </asi-empty>
+      <asi-selected *selectedDef="let data">{{'enums.contentType.' + data | translate }}</asi-selected>
+      <asi-option *optionDef="let data">{{'enums.contentType.' + data | translate }}</asi-option>
+    </asi-select>
+
+    <asi-error-messages forName="type">
+      <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
+    </asi-error-messages>
+  </div>
+
+  <!-- Name -->
+  <div class="asi-container">
+    <asi-input label="Name : " formControlName="name"></asi-input>
+    <error-messages forName="name">
+      <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+    </error-messages>
+  </div>
+
+  <div class="asi-container">
+    <asi-textarea label="Description : " rows="3" formControlName="description"></asi-textarea>
+    <error-messages forName="description">
+      <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+    </error-messages>
+  </div>
+
+  <div class="dialog-action" fxLayout="row" fxLayoutAlign="center">
+    <asi-button type="submit">Create</asi-button>
+    <asi-button (click)="dialog.cancel()" design="bordered">Cancel</asi-button>
+  </div>
+
+</form>

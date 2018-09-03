@@ -11,10 +11,10 @@ import { AppRoutingModule } from './pages/app.router';
 import { UniversalService } from './common/universal/universal.service';
 import { TranslateUniversalLoader } from './common/universal/universal.loader';
 
+
 const translateLoader = (transferState: TransferState, universalService: UniversalService, httpClient: HttpClient) => {
   return new TranslateUniversalLoader(transferState, universalService, httpClient);
 };
-
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ const translateLoader = (transferState: TransferState, universalService: Univers
         useFactory: translateLoader,
         deps: [TransferState, UniversalService, HttpClient]
       }
-    }),
+    })
   ],
   providers: [{ provide: ErrorHandler, useClass: CmsErrorHandler }]
 })

@@ -1,6 +1,7 @@
 import { ApiUseTags } from '@nestjs/swagger';
 import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
 import { Authenticate } from '../security/guards/authenticate.decator';
+import { User } from '@common/decorators/user.decorator';
 
 @ApiUseTags('home')
 @Controller('/')
@@ -15,10 +16,7 @@ export class HomeController {
   @Get('me')
   @HttpCode(HttpStatus.OK)
   @Authenticate()
-  public me() {
-    return {
-      name: 'admin',
-      role: 'ADMIN'
-    };
+  public me(@User() user) {
+    return user;
   }
 }

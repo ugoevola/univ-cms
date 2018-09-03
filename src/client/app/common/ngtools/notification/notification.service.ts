@@ -5,9 +5,9 @@ import { AsiNotificationType } from '@asi-ngtools/lib';
 import { NotificationComponent } from './notification.component';
 
 @Injectable()
-export class InexysNotificationService {
+export class UcmsNotificationService {
 
-  private baseDelay = 2000;
+  private baseDelay = 4000;
 
   constructor(private asiNotificationService: AsiNotificationService) {
   }

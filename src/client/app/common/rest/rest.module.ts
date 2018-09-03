@@ -2,13 +2,14 @@
 
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InexysHttpInterceptor } from './http.interceptor';
+import { UcmsHttpInterceptor } from './http.interceptor';
 import { NgToolsModule } from '../ngtools/ngtools.module';
 import { UserStore } from '../store/user.store';
 import { ContentWebService } from '@rest/content.webservice';
 import { HomeWebService } from '@rest/home.webservice';
+import { RequestWebService } from '@rest/request.webservice';
 
-const sharedServices = [ContentWebService, HomeWebService];
+const sharedServices = [ContentWebService, HomeWebService, RequestWebService];
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ const sharedServices = [ContentWebService, HomeWebService];
   providers: [
     ...sharedServices,
     UserStore,
-    { provide: HTTP_INTERCEPTORS, useClass: InexysHttpInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: UcmsHttpInterceptor, multi: true }
   ],
 })
 export class RestModule {

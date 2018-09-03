@@ -3,10 +3,13 @@ import { HomeController } from './home.controller';
 import { Module } from '@nestjs/common';
 import { ServiceModule } from '@services/service.module';
 import { ContentController } from './content.controller';
+import { CommonModule } from '@common/common.module';
+import { RenderController } from './render.controller';
+import { RequestController } from './request.controller';
 
 @Module({
-  imports: [ServiceModule],
-  controllers: [PageController, ContentController, HomeController],
+  imports: [ServiceModule, CommonModule],
+  controllers: [PageController, ContentController, HomeController, RenderController, RequestController],
   exports : [ServiceModule],
 })
 export class RoutesModule {}

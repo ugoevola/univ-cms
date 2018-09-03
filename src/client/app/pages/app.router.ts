@@ -14,6 +14,16 @@ import { ContentManagerPage } from './content/manager/content-manager.page';
 import { FormManagerComponent } from './content/manager/forms/form-manager.component';
 import { ContentsListResolver } from './content/list/content-list.resolver';
 import { LoginPage } from './login/login.page';
+import { FootComponent } from './footer/footer.component';
+import { MembersPage } from './members/members.page';
+import { NewContentModal } from './content/list/new/new-content.modal';
+import { ContentResolver } from './content/content.resolver';
+import { ContentDataComponent } from './content/manager/data/content-data.component';
+import { ContentPreviewComponent } from './content/manager/preview/content-preview.component';
+import { RequestsPage } from './requests/requests.page';
+import { HelpPage } from './help/help.page';
+import { NewRequestModal } from './requests/new/new-request.modal';
+import { RequestsResolver } from './requests/requests.resolver';
 
 const appRouter: Routes = [
   { path: 'login', component: LoginPage },
@@ -24,10 +34,13 @@ const appRouter: Routes = [
       {
         path: 'content', component: ContentPage, children: [
           { path: 'list', component: ContentListPage, resolve: { contents: ContentsListResolver } },
-          { path: 'manager', component: ContentManagerPage },
+          { path: 'manager/:reference', component: ContentManagerPage, resolve: { content: ContentResolver, requests: RequestsResolver } },
           { path: '', redirectTo: 'list', pathMatch: 'full' }
         ]
       },
+      { path: 'members', component: MembersPage },
+      { path: 'requests', component: RequestsPage, resolve: { requests: RequestsResolver } },
+      { path: 'help', component: HelpPage },
       { path: '', redirectTo: 'home', pathMatch: 'full' }
     ]
   },
@@ -39,13 +52,21 @@ const appRouter: Routes = [
     AppPage,
     LoginPage,
     HomePage,
+    HelpPage,
+    RequestsPage,
     HeaderComponent,
     MenuComponent,
     ContentListPage,
     ContentManagerPage,
+    ContentDataComponent,
     ContentPage,
     FormManagerComponent,
     TemplateManagerComponent,
+    FootComponent,
+    MembersPage,
+    NewContentModal,
+    NewRequestModal,
+    ContentPreviewComponent
   ],
   imports: [
     RouterModule.forRoot(appRouter, {
@@ -54,12 +75,18 @@ const appRouter: Routes = [
     }),
     CmsCommonModule
   ],
+  entryComponents: [
+    NewContentModal,
+    NewRequestModal
+  ],
   exports: [
     RouterModule,
     HeaderComponent,
   ],
   providers: [
-    ContentsListResolver
+    ContentsListResolver,
+    ContentResolver,
+    RequestsResolver
   ]
 })
 export class AppRoutingModule { }

@@ -9,6 +9,7 @@ import { AuthService } from './security/auth.service';
 import { RoutesModule } from './routes/routes.modules';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Config } from './config/config';
+import { CookieParserMiddleware } from '@nest-middlewares/cookie-parser';
 
 @Module({
   imports: [RoutesModule, TypeOrmModule.forRoot({
@@ -38,7 +39,7 @@ import { Config } from './config/config';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes({
+    consumer.apply(AuthMiddleware, CookieParserMiddleware).forRoutes({
       path: '*', method: RequestMethod.ALL,
     });
   }

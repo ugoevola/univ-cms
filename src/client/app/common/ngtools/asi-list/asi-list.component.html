@@ -1,0 +1,9 @@
+<div class="asi-list-container">
+    <div class="asi-list-panel">
+      <ul class="items-container">
+        <li *ngFor="let item of filteredData; let first = first; let last = last" class="item-container" routerLinkActive="active" (click)="item.emitClick($event)">
+            <ng-template *ngIf="listItemDef" [ngTemplateOutlet]="listItemDef.template" [ngTemplateOutletContext]="{$implicit : item}"></ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>

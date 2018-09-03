@@ -1,24 +1,36 @@
 <div class="flex-row">
-  <div fxFlex="50"></div>
-  <div fxFlex="50" fxLayout="column" fxLayoutAlign="center">
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div class="asi-container">
-        <asi-input-icon icon="fa-user" label="page.login.form.email" iconPosition="right" formControlName="email"></asi-input-icon>
-        <error-messages forName="email">
-          <message error="email" value="validations.email"></message>
-          <message error="required" value="validations.required" onSubmit="true"></message>
-        </error-messages>
-      </div>
-      <div class="asi-container">
-        <asi-input-icon icon="fa-lock" label="page.login.form.password" type="password" iconPosition="right" formControlName="password"></asi-input-icon>
-        <error-messages forName="password">
-          <message error="required" value="validations.required" onSubmit="true"></message>
-        </error-messages>
-      </div>
-      <div fxLayout="row">
-        <asi-button type="submit">Submit</asi-button>
-      </div>
-    </form>
+  <div fxFlex="30" class="loginLeftPanel" fxLayoutAlign="center center">
+    <div class="logoPanel">
+      <img class="logo" [src]="'logo.svg' | assetsUrl" />
+      <label>Ucms</label>
+    </div>
+  </div>
+
+  <div fxFlex="70" fxLayout="column" fxLayoutAlign="center center" class="loginRightPanel">
+    <div class="loginFormPanel">
+      <h1>Please log in</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm" name="login-form" id="login-form">
+        <!-- <fieldset> -->
+          <div class="asi-container">
+            <asi-input-icon icon="fa fa-user" name="email" id="email" label="page.login.form.email" iconPosition="left" formControlName="email"></asi-input-icon>
+            <error-messages forName="email">
+              <message error="email" value="validations.email"></message>
+              <message error="required" value="validations.required" onSubmit="true"></message>
+            </error-messages>
+          </div>
+          <div class="asi-container">
+            <asi-input-icon icon="fa fa-lock" name="password" id="password" label="page.login.form.password" type="password" iconPosition="left" formControlName="password"
+              name="password"></asi-input-icon>
+            <error-messages forName="password">
+              <message error="required" value="validations.required" onSubmit="true"></message>
+            </error-messages>
+          </div>
+        <!-- </fieldset> -->
+        <div fxLayout="row" fxLayoutAlign="center">
+          <asi-button type="submit">Login</asi-button>
+        </div>
+      </form>
+    </div>
   </div>
 
 </div>

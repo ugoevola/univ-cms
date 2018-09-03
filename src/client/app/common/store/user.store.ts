@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { CookiesService } from '@ngx-utils/cookies';
+import { User } from '@shared/interface/user.int';
 
 @Injectable()
 export class UserStore {
 
-  private user: any;
+  private user: User;
 
   constructor(private cookies: CookiesService) {
   }

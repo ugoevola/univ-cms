@@ -1,1 +1,24 @@
 <h1> Content list </h1>
+
+<div fxLayout="row" fxLayoutAlign="end" fxFlex="0 0 auto">
+  <asi-button design="bordered" (click)="showNewContentModel()">
+    <asi-fa-icon icon="fa fa-plus-circle" label="new" labelPosition="right"></asi-fa-icon>
+  </asi-button>
+</div>
+
+<asi-list [data]="contents">
+  <asi-list-item *listItemDef="let content">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <div>
+        <div> Type : {{'enums.contentType.' + content.type | translate }} </div>
+        <div> Name : {{content.name}} </div>
+        <div> Content url : {{ '/api/render/' + content.reference}}</div>
+        <p> Description : {{content.description}}</p>
+      </div>
+      <div fxLayout="row">
+        <asi-fa-icon icon="fa fa-edit" tooltip="edit" size="1x" tooltipPosition="left" (click)="goToContentManager(content)"></asi-fa-icon>
+        <asi-fa-icon icon="fa fa-trash" tooltip="delete" size="1x" tooltipPosition="left" (click)="deleteContent(content)"></asi-fa-icon>
+      </div>
+    </div>
+  </asi-list-item>
+</asi-list>

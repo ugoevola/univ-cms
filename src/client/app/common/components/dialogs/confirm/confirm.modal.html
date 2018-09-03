@@ -1,0 +1,12 @@
+<div class="dialog-header">
+  {{header | translate }}
+</div>
+
+<div class="dialog-content">
+  {{message | translate}}
+</div>
+
+<div class="dialog-action">
+  <asi-button (click)="dialog.close()">Confirm</asi-button>
+  <asi-button (click)="dialog.cancel()" design="bordered">Cancel</asi-button>
+</div>

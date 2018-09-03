@@ -1,0 +1,79 @@
+<form [formGroup]="contentDataForm">
+  <fieldset>
+    <div class="asi-container">
+      <asi-input label="page.content.manager.data.name" formControlName="name" placeholder="Name"></asi-input>
+      <asi-error-messages forName="name">
+        <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
+    </div>
+
+    <div class="asi-container">
+      <asi-textarea label="page.content.manager.data.description" formControlName="description" rows="4" placeholder="Description"></asi-textarea>
+      <asi-error-messages forName="description">
+        <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
+    </div>
+
+  </fieldset>
+
+  <fieldset formGroupName="data">
+
+    <div class="asi-container">
+      <asi-radio-group label="page.content.manager.data.from" formControlName="from"  labelPosition="left" (onValueChange)="fromBodyChange($event)">
+        <asi-radio value="REQUEST">Existing request</asi-radio>
+        <asi-radio value="BODY">Request body</asi-radio>
+        <asi-radio value="URL">External API</asi-radio>
+      </asi-radio-group>
+      <asi-error-messages forName="from">
+        <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
+    </div>
+
+    <hr/>
+    <div fxLayout="column" *ngIf="from === 'URL'">
+      <div fxLayout="row" fxLayoutAlign="stretch center">
+        <h4>External API informations : </h4>
+        <asi-fa-icon icon="fas fa-sync-alt" (onClick)="loadData()" tooltip="load data" tooltipPosition="top"></asi-fa-icon>
+      </div>
+
+      <div class="asi-container">
+        <asi-input label="page.content.manager.data.url" formControlName="url" placeholder="Url"></asi-input>
+        <asi-error-messages forName="url">
+          <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
+        </asi-error-messages>
+      </div>
+
+      <div class="asi-container">
+        <asi-select label="page.content.manager.data.method" [data]="methods" formControlName="method" placeholder="Method">
+          <asi-selected *selectedDef="let data">{{data}}</asi-selected>
+          <asi-option *optionDef="let data">{{data}}</asi-option>
+        </asi-select>
+        <asi-error-messages forName="method">
+          <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
+        </asi-error-messages>
+      </div>
+
+      <asi-textarea *ngIf="isMethodPost()" formControlName="body" label="body : " rows="6"></asi-textarea>
+    </div>
+
+    <div fxLayout="column" *ngIf="from === 'BODY'">
+      <h3>Try it out with default value : </h3>
+      <asi-textarea label="page.content.manager.data.body" formControlName="exampleBody" placeholder="Body" rows="6" cols="150" (onValueChange)="formatJson($event)"></asi-textarea>
+    </div>
+
+    <div fxLayout="column" *ngIf="from === 'REQUEST'">
+      <asi-select label="page.content.manager.data.request" [data]="requests" formControlName="request">
+        <asi-empty *emptyDef="let data">Please select a request</asi-empty>
+        <asi-selected *selectedDef="let data">{{ data.name }}</asi-selected>
+        <asi-option *optionDef="let data">{{ data.name }}</asi-option>
+      </asi-select>
+    </div>
+
+  </fieldset>
+
+  <div class="data-viewer">
+    <pre class="data" [innerHTML]="getData()"></pre>
+  </div>
+
+
+</form>

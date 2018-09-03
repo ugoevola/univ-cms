@@ -1,23 +1,84 @@
 {
-  "page" : {
-    "login" : {
-      "title" : "Login",
-      "form" : {
-        "email" : "Email",
-        "password" : "Password"
+  "page": {
+    "login": {
+      "title": "Login",
+      "form": {
+        "email": "Email",
+        "password": "Password"
       },
       "notifications": {
-        "success" : "Welcome to Univ CMS",
-        "badcrendential" : "Bad credential",
-        "connection-problem" : "An error occured while trying to contact authentication server"
+        "success": "Welcome to Univ CMS",
+        "badcrendential": "Bad credential",
+        "connection-problem": "An error occured while trying to contact authentication server"
       }
     },
-    "home" : {
-      "title" : "Univ CMS"
+    "home": {
+      "title": "Univ CMS"
+    },
+    "content": {
+      "list": {
+        "new": {
+          "modal": {
+            "create": "New content creation",
+            "type": "Type :"
+          }
+        }
+      },
+      "manager": {
+        "data": {
+          "name": "Name :",
+          "description": "Description :",
+          "from": "From :",
+          "request": "Request :",
+          "body": "Body :",
+          "url": "Url :",
+          "method": "Method :"
+        },
+        "preview": {
+          "empty": "No preview to display yet"
+        }
+      },
+      "notifications": {
+        "create-success": "Content created",
+        "update-success": "Content updated",
+        "delete-success": "Content deleted",
+        "delete-fail": "An error occured while trying to delete content"
+      },
+      "modal": {
+        "confirm-delete": "Are you sur to want to delete this content ?"
+      }
+    },
+    "request": {
+      "list": {
+        "new": {
+          "modal": {
+            "name": "Name :",
+            "url": "Url :",
+            "method": "Method :",
+            "body": "Body :"
+          }
+        }
+      },
+      "modal": {
+        "confirm-delete": "Are you sur to want to delete this request ?"
+      },
+      "notifications": {
+        "create-success": "Request created",
+        "update-success": "Request updated",
+        "update-fail": "An error occured while trying to delete the request",
+        "delete-success": "Request deleted",
+        "delete-fail": "An error occured while trying to delete the request"
+      }
+    },
+    "enums": {
+      "contentType": {
+        "ARTICLE": "Article",
+        "FORM": "Form"
+      }
+    },
+    "validations": {
+      "email": "Please write a correct email",
+      "required": "This field is required"
     }
-  },
-  "validations" : {
-    "email" : "Please write a correct email",
-    "required" : "This field is required"
   }
 }

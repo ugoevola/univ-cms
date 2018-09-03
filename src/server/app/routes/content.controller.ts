@@ -10,8 +10,7 @@ import { Authenticate } from '../security/guards/authenticate.decator';
 @Authenticate()
 export class ContentController {
 
-  constructor(private readonly contentService: ContentService) {
-  }
+  constructor(private readonly contentService: ContentService) {}
 
   @Post('')
   @HttpCode(HttpStatus.CREATED)

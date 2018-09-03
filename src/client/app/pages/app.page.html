@@ -1,4 +1,10 @@
-<div class="flex-row">
-  <univ-menu></univ-menu>
-  <router-outlet></router-outlet>
+<div class="flex-column">
+  <univ-header></univ-header>
+  <div class="flex-row">
+    <univ-menu></univ-menu>
+    <div class="ui-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <univ-footer></univ-footer>
 </div>

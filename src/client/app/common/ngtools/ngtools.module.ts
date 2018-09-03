@@ -10,10 +10,18 @@ import {
   AsiErrorMessagesModule,
   AsiServicesModule,
   AsiMenuModule,
-  AsiRadioGroupModule
+  AsiRadioGroupModule,
+  AsiFaIconModule,
+  AsiDialogModule,
+  AsiTabGroupModule,
+  AsiTableModule,
+  AsiPipesModule
 } from '@asi-ngtools/lib';
 import { NotificationComponent } from './notification/notification.component';
-import { InexysNotificationService } from './notification/notification.service';
+import { UcmsNotificationService } from './notification/notification.service';
+import { AsiList } from './asi-list/asi-list.component';
+import { AsiComponentTemplateListItemDef, AsiListItemTemplate } from './asi-list/asi-list-item.component';
+import { AsiPanel } from './asi-panel/asi-panel.component';
 
 const modules = [
   AsiInputModule,
@@ -27,15 +35,24 @@ const modules = [
   AsiErrorMessagesModule,
   AsiServicesModule,
   AsiRadioGroupModule,
-  AsiMenuModule
+  AsiFaIconModule,
+  AsiMenuModule,
+  AsiDialogModule,
+  AsiTabGroupModule,
+  AsiTableModule,
+  AsiPipesModule
 ];
 
 @NgModule({
-  declarations: [NotificationComponent],
+  declarations: [NotificationComponent,
+    AsiList,
+    AsiListItemTemplate,
+    AsiComponentTemplateListItemDef,
+    AsiPanel],
   imports: [modules],
-  exports: [modules],
+  exports: [modules,  AsiList, AsiListItemTemplate, AsiComponentTemplateListItemDef, AsiPanel],
   entryComponents : [NotificationComponent],
-  providers: [InexysNotificationService]
+  providers: [UcmsNotificationService]
 })
 export class NgToolsModule {
 }

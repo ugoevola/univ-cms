@@ -1,3 +1,9 @@
 <header id="univ-header" class="univ-header">
-  <label> Univ CMS </label>
+  <div class="title-panel">
+    <img class="logo" [src]="'logo.svg' | assetsUrl" />
+    <span class="title"> Univ CMS </span>
+  </div>
+  <div class="userInfo">
+    <span>{{user.givenName}}</span>
+  </div>
 </header>

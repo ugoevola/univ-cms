@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const user = request.user;
     if (!user && authenticate) {
-        throw new HttpException('', HttpStatus.UNAUTHORIZED);
+        throw new HttpException('Please log in', HttpStatus.UNAUTHORIZED);
     }
     if (!lodash.isEmpty(roles)) {
       return this.hasRoleOneOfRoles(user, roles);

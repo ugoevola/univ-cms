@@ -9,6 +9,7 @@ export abstract class BaseService<E extends IMongoModel> {
   async create(entity: E): Promise<E> {
     try {
       entity.createdOn = new Date();
+      entity.updatedOn = new Date();
       const insertResult = await this.repository.insert(entity);
       entity._id = insertResult.raw.insertedId;
       return entity;
@@ -28,6 +29,11 @@ export abstract class BaseService<E extends IMongoModel> {
     return entity;
   }
 
+  async exist(reference: string) {
+    const count = await this.repository.count(this.condition('reference', reference));
+    return count > 0;
+  }
+
   async delete(reference: string): Promise<boolean> {
     const result = await this.repository.delete(this.condition('reference', reference));
     return !!result;
@@ -45,7 +51,7 @@ export abstract class BaseService<E extends IMongoModel> {
     return this.repository.findOne({ where: { reference } });
   }
 
-  private condition(name, value) {
+  condition(name, value) {
     const literal = {};
     literal[name] = value;
     return literal;
