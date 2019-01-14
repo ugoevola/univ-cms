@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Content } from '@shared/interface/content.int';
 import { AsiDialogService } from '@asi-ngtools/lib';
@@ -17,6 +17,8 @@ export class ContentListPage implements OnInit {
 
   @HostBinding('class') class = 'flex-column';
 
+  @ViewChild('child2') myChild2;
+
   contents: Array<Content>;
 
   constructor(private router: Router,
@@ -30,7 +32,6 @@ export class ContentListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.contents = this.route.snapshot.data.contents;
   }
 
   showNewContentModel() {

@@ -8,13 +8,13 @@
 
 <asi-table [autoPaginate]="true" [nbElementParPage]="20" [autoSort]="true" [onRequestData]="refreshTable">
   <asi-table-column name="name" libelle="Name">
-    <asi-cell *cellDef="let request">{{request.name}}</asi-cell>
+    <asi-cell *asiCellDef="let request">{{request.name}}</asi-cell>
   </asi-table-column>
   <asi-table-column name="updatedOn" libelle="Last update">
-    <asi-cell *cellDef="let request">{{request.updatedOn | asiDate: 'DD/MM/YYYY HH:mm'}}</asi-cell>
+    <asi-cell *asiCellDef="let request">{{request.updatedOn | asiDate: 'DD/MM/YYYY HH:mm'}}</asi-cell>
   </asi-table-column>
   <asi-table-column name="action">
-    <asi-cell *cellDef="let request" fxLayout="row">
+    <asi-cell *asiCellDef="let request" fxLayout="row">
       <asi-fa-icon icon="fa fa-trash" tooltip="delete" (onClick)="deleteRequest(request)"></asi-fa-icon>
       <asi-fa-icon icon="fa fa-pen" tooltip="edit" (onClick)="editRequest(request)"></asi-fa-icon>
     </asi-cell>

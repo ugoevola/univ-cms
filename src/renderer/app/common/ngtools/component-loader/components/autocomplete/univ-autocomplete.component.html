@@ -1,0 +1,13 @@
+<div class="asi-container">
+  <asi-autocomplete [onRequestData]="requestData"
+  [label]="label"
+  [data]="data"
+  [formControlName]="formControlName">
+    <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
+    <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+  </asi-autocomplete>
+  <!-- <error-messages forName="from">
+      <message error="required" value="VALIDATIONS.required"></message>
+      <message error="maxDate" value="Date trop grande"></message>
+    </error-messages> -->
+</div>

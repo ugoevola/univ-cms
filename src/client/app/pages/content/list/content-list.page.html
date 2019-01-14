@@ -7,7 +7,7 @@
 </div>
 
 <asi-list [data]="contents">
-  <asi-list-item *listItemDef="let content">
+  <asi-list-item *asiListItemDef="let content">
     <div fxLayout="row" fxLayoutAlign="space-between">
       <div>
         <div> Type : {{'enums.contentType.' + content.type | translate }} </div>

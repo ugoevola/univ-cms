@@ -1,7 +1,7 @@
 import { Directive, TemplateRef, Component } from '@angular/core';
 
 @Directive({
-  selector: '[listItemDef]',
+  selector: '[asiListItemDef]',
 })
 export class AsiComponentTemplateListItemDef {
   constructor(public template: TemplateRef<any>) {

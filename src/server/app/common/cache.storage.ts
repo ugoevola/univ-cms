@@ -1,4 +1,4 @@
-import * as NodeCache from 'node-cache';
+const NodeCache = require('node-cache');
 import { Injectable } from '@angular/core';
 
 @Injectable()

@@ -1,9 +1,12 @@
+import { Config } from './config/config';
+Config.init();
+
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import { WinLogger } from './common/logger/winlogger';
-import { Config } from './config/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ClientServer } from './client.server';
+import { RendererServer } from './renderer.server';
 
 const logger = WinLogger.get('main');
 
@@ -38,8 +41,17 @@ async function bootstrap() {
     clientStarted = true;
   }
 
+  let rendererStarted = false;
+  if (Config.get().RENDERER_ACTIVATED) {
+    await RendererServer.bootstrap(app);
+    rendererStarted = true;
+  }
+
   if (clientStarted) {
     logger.info(`Client server listening on http://localhost:${Config.get().CLIENT_PORT}`);
+  }
+  if (rendererStarted) {
+    logger.info(`Renderer server listening on http://localhost:${Config.get().RENDERER_PORT}`);
   }
   logger.info(`Server started on port ${serverPort}`);
   if (swaggerActivated) {

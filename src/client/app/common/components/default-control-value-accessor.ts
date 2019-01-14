@@ -8,7 +8,7 @@ export class DefaultControlValueAccessor implements ControlValueAccessor {
 
   @Input() disabled = false;
 
-  @Output() onValueChange = new EventEmitter();
+  @Output() valueChange = new EventEmitter();
 
   onChange: any = () => { };
   onTouched: any = () => { };
@@ -21,7 +21,7 @@ export class DefaultControlValueAccessor implements ControlValueAccessor {
     this._value = val;
     this.onChange(val);
     this.onTouched();
-    this.onValueChange.emit(this.value);
+    this.valueChange.emit(this.value);
   }
 
   registerOnChange(fn: any): void {

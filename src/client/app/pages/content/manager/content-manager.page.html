@@ -5,7 +5,11 @@
   <div> Content url : {{ '/api/render/' + content.reference}}</div>
 </asi-panel>
 
-<asi-tab-group>
+<div *ngIf="content.type === 'FORM'">
+  <form-manager [content]="content"></form-manager>
+</div>
+
+<asi-tab-group *ngIf="content.type === 'ARTICLE'">
   <asi-tab label="Edit">
     <rich-text-editor [(ngModel)]="content.content"></rich-text-editor>
   </asi-tab>

@@ -19,7 +19,7 @@
   <fieldset formGroupName="data">
 
     <div class="asi-container">
-      <asi-radio-group label="page.content.manager.data.from" formControlName="from"  labelPosition="left" (onValueChange)="fromBodyChange($event)">
+      <asi-radio-group label="page.content.manager.data.from" formControlName="from" labelPosition="left" (onValueChange)="fromBodyChange($event)">
         <asi-radio value="REQUEST">Existing request</asi-radio>
         <asi-radio value="BODY">Request body</asi-radio>
         <asi-radio value="URL">External API</asi-radio>
@@ -45,8 +45,8 @@
 
       <div class="asi-container">
         <asi-select label="page.content.manager.data.method" [data]="methods" formControlName="method" placeholder="Method">
-          <asi-selected *selectedDef="let data">{{data}}</asi-selected>
-          <asi-option *optionDef="let data">{{data}}</asi-option>
+          <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+          <asi-option *asiOptionDef="let data">{{data}}</asi-option>
         </asi-select>
         <asi-error-messages forName="method">
           <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>
@@ -58,14 +58,19 @@
 
     <div fxLayout="column" *ngIf="from === 'BODY'">
       <h3>Try it out with default value : </h3>
-      <asi-textarea label="page.content.manager.data.body" formControlName="exampleBody" placeholder="Body" rows="6" cols="150" (onValueChange)="formatJson($event)"></asi-textarea>
+      <asi-textarea label="page.content.manager.data.body" formControlName="exampleBody" placeholder="Body" rows="6" cols="150"
+        (onValueChange)="formatJson($event)"></asi-textarea>
     </div>
 
     <div fxLayout="column" *ngIf="from === 'REQUEST'">
+      <div fxLayout="row" fxLayoutAlign="stretch center">
+        <h4>Select an existing request : </h4>
+        <asi-fa-icon icon="fas fa-sync-alt" (onClick)="loadData()" tooltip="load data" tooltipPosition="top"></asi-fa-icon>
+      </div>
       <asi-select label="page.content.manager.data.request" [data]="requests" formControlName="request">
-        <asi-empty *emptyDef="let data">Please select a request</asi-empty>
-        <asi-selected *selectedDef="let data">{{ data.name }}</asi-selected>
-        <asi-option *optionDef="let data">{{ data.name }}</asi-option>
+        <asi-empty *asiEmptyDef="let data">Please select a request</asi-empty>
+        <asi-selected *asiSelectedDef="let data">{{ data.name }}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{ data.name }}</asi-option>
       </asi-select>
     </div>
 

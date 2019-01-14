@@ -14,6 +14,9 @@ export class Config {
     CLIENT_PORT: string;
     CLIENT_ACTIVATED: boolean;
     CLIENT_PROXY_ACTIVATED: boolean;
+    RENDERER_PORT: string;
+    RENDERER_ACTIVATED: boolean;
+    RENDERER_PROXY_ACTIVATED: boolean;
     SERVER_PATH: string,
     LOG_LEVEL: string,
     SWAGGER_ACTIVATED: string,
@@ -23,11 +26,12 @@ export class Config {
   private constructor() {
   }
 
+  public static init() {
+    this.instance = new Config();
+    this.instance.init();
+  }
+
   public static get() {
-    if (!this.instance) {
-      this.instance = new Config();
-      this.instance.init();
-    }
     return this.instance.config;
   }
 
@@ -41,10 +45,10 @@ export class Config {
     const nodeEnv = process.env.NODE_ENV;
 
     if (nodeEnv) {
-      WinLogger.get('config').info(`Loading ${nodeEnv} configuration`);
       try {
         const override = this.getConfig(server_config_folder, `${nodeEnv}.js`).config;
         jsonOverride(this.config, override);
+        WinLogger.get('config').info(`Loading ${nodeEnv} configuration`);
       } catch (error) {
         WinLogger.get('config').warn(`No configuration found for ${nodeEnv}`);
       }

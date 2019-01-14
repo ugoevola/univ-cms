@@ -21,25 +21,29 @@ export class ContentRendererService {
 
     let datas: any = {};
     const data = content.data;
-    if (data) {
-      if (data.from === 'BODY') {
+
+    switch (data && data.from) {
+      case 'BODY':
         datas = req.body;
-      } else if (data.from === 'URL') {
+        break;
+      case 'URL':
         try {
-          const httpRes: AxiosResponse = await this.httpService.request({
-            method: data.method,
-            url: data.url,
-            data: data.body,
-            headers: {
-              authorization: req['cookies'].authorization
-            }
-          }).toPromise();
+          const httpRes: AxiosResponse = await this.sendRequest(data.method, data.url, data.body, req);
           datas = httpRes.data;
         } catch (err) {
           console.log(err);
         }
-      }
+        break;
+      case 'REQUEST':
+        try {
+          const httpRes: AxiosResponse = await this.sendRequest(data.request.method, data.request.url, data.request.body, req);
+          datas = httpRes.data;
+        } catch (err) {
+          console.log(err);
+        }
+        break;
     }
+
     const template = content.content;
     Mustache.parse(template);
     const rendered = Mustache.render(template, datas);
@@ -47,5 +51,16 @@ export class ContentRendererService {
     await this.univCache.set('content/' + content.reference, rendered);
 
     return rendered;
+  }
+
+  private sendRequest(method, url, body, req) {
+    return this.httpService.request({
+      method: method,
+      url: url,
+      data: body,
+      headers: {
+        authorization: req['cookies'].authorization
+      }
+    }).toPromise();
   }
 }

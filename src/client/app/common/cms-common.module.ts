@@ -8,13 +8,12 @@ import { UserResolve } from './resolvers/user.resolve';
 import { CommonModule } from '@angular/common';
 import { UniversalService } from './universal/universal.service';
 import { RichTextEditorComponent } from './components/richtexteditor/richtexteditor.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { AssetsUrlPipe } from './pipes/assets-url.pipe';
 import { ConfirmModal } from './components/dialogs/confirm/confirm.modal';
 import { OnBrowserSide } from './universal/on-browser-side.pipe';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 const sharedItems = [RichTextEditorComponent, AssetsUrlPipe, ConfirmModal, OnBrowserSide];
-
 @NgModule({
   declarations: [
     ...sharedItems
@@ -24,16 +23,13 @@ const sharedItems = [RichTextEditorComponent, AssetsUrlPipe, ConfirmModal, OnBro
     RestModule,
     NgToolsModule,
     FlexLayoutModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
+    AngularEditorModule
   ],
   exports: [
     CommonModule,
     RestModule,
     NgToolsModule,
     FlexLayoutModule,
-    FroalaEditorModule,
-    FroalaViewModule,
     ...sharedItems
   ],
   entryComponents : [ConfirmModal],

@@ -1,5 +1,5 @@
 <div class="content-preview">
     <asi-button *ngIf="dataError" (click)="dataError=false"> Reload</asi-button>
     <span *ngIf="!hasPreview()" translate="page.content.manager.preview.empty"></span>
-    <pre *ngIf="hasPreview()" [innerHtml]="getPreview()"></pre>
+    <div *ngIf="hasPreview()" [innerHtml]="getPreview()"></div>
 </div>

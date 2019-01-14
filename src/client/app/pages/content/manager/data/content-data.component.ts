@@ -27,7 +27,7 @@ export class ContentDataComponent implements OnInit {
 
   ngOnInit() {
     if (!this.content.data) {
-      this.content.data = { from: 'BODY' };
+      this.content.data = { from: 'REQUEST' };
     }
 
     this.from = this.content.data.from;
@@ -44,7 +44,7 @@ export class ContentDataComponent implements OnInit {
     this.contentDataForm = this.formBuilder.group({
       name: [this.content.name, Validators.required],
       description: [this.content.description, Validators.required],
-      data: this.dataFormGroup
+      data: this.dataFormGroup,
     });
 
     this.contentDataForm.valueChanges.subscribe((value) => {
@@ -103,9 +103,9 @@ export class ContentDataComponent implements OnInit {
     if (!lodash.isEmpty(text)) {
       try {
         const object = JSON.parse(text);
-        this.formatedJSON = JSON.stringify(object, null, 4);
+        this.formatedJSON = JSON.stringify(object, null, 2);
         setTimeout(() => {
-          this.contentDataForm.controls.exampleBody.setValue(JSON.stringify(object, null, 4));
+          this.dataFormGroup.controls.exampleBody.setValue(this.formatedJSON);
         }, 0);
       } catch (err) {
         console.log('Invalid JSON', err);
@@ -114,9 +114,16 @@ export class ContentDataComponent implements OnInit {
   }
 
   loadData() {
-    this.http.request(new HttpRequest(this.content.data.method, this.content.data.url, this.content.data.body)).subscribe((res) => {
-      this.dataLoaded = res['body'] || res['text'];
-    });
+    if (this.from === 'URL') {
+      this.http.request(new HttpRequest(this.content.data.method, this.content.data.url, this.content.data.body)).subscribe((res) => {
+        this.dataLoaded = res['body'] || res['text'];
+      });
+    } else if (this.from === 'REQUEST' && this.content.data.request) {
+      this.http.request(new HttpRequest(this.content.data.request.method,
+        this.content.data.request.url, this.content.data.request.body)).subscribe((res) => {
+        this.dataLoaded = res['body'] || res['text'];
+      });
+    }
   }
 
   getData() {

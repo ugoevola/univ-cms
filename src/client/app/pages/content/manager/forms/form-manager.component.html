@@ -1,1 +1,15 @@
 <h1> Form </h1>
+
+<form [formGroup]="formGroup" name="form.name" (ngSubmit)="submit()">
+  <ng-container *ngFor="let item of form.items">
+    <ng-container *ngIf="item.type === 'container'">
+      <div [fxLayout]="item.direction" [fxLayoutAlign]="item.align">
+        <ng-container *ngFor="let child of item.children"
+        univComponentLoader
+        [initData]="child"
+        [group]="formGroup">
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</form>

@@ -17,7 +17,6 @@ export class ContentPreviewComponent {
   @Input() content: Content;
   @Input() loadedData: any;
 
-
   dataLoading = false;
   dataError = false;
 
@@ -39,27 +38,19 @@ export class ContentPreviewComponent {
       if (this.content.data.from === 'BODY') {
         const rendered = Mustache.render(template, JSON.parse(this.content.data.exampleBody || '{}'));
         return this.sanitizer.bypassSecurityTrustHtml(rendered);
-      } else {
+      } else if (this.content.data.from === 'URL') {
         if (this.loadedData) {
           const rendered = Mustache.render(template, this.loadedData);
           return this.sanitizer.bypassSecurityTrustHtml(rendered);
         } else {
-          if (!this.dataLoading && !this.dataError) {
-            this.dataLoading = true;
-            this.http.request(new HttpRequest(this.content.data.method,
-              this.content.data.url, this.content.data.body,
-              { reportProgress: false, responseType: 'json' })).pipe(share()).subscribe((res) => {
-                if (res.type !== HttpEventType.Sent) {
-                  const data = res['body'] || res['text'];
-                  this.loadedData = data || {};
-                  this.dataLoading = false;
-                }
-              }, (err) => {
-                this.dataLoading = false;
-                this.dataError = true;
-                console.log(err);
-              });
-          }
+          this.loadData(this.content.data);
+        }
+      } else if (this.content.data.from === 'REQUEST') {
+        if (this.loadedData) {
+          const rendered = Mustache.render(template, this.loadedData);
+          return this.sanitizer.bypassSecurityTrustHtml(rendered);
+        } else {
+          this.loadData(this.content.data.request);
         }
       }
     } catch (err) {
@@ -67,5 +58,24 @@ export class ContentPreviewComponent {
       console.log(err);
     }
     return '';
+  }
+
+  private loadData(request) {
+    if (!this.dataLoading && !this.dataError) {
+      this.dataLoading = true;
+      this.http.request(new HttpRequest(request.method,
+        request.url, request.body,
+        { reportProgress: false, responseType: 'json' })).pipe(share()).subscribe((res) => {
+          if (res.type !== HttpEventType.Sent) {
+            const data = res['body'] || res['text'];
+            this.loadedData = data || {};
+            this.dataLoading = false;
+          }
+        }, (err) => {
+          this.dataLoading = false;
+          this.dataError = true;
+          console.log(err);
+        });
+    }
   }
 }

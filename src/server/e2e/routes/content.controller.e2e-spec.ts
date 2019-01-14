@@ -4,6 +4,7 @@ import { TestServer } from '../test-server';
 import { default as adminAccount } from '../resources/account/admin';
 import * as lodash from 'lodash';
 import { ContentDto } from '../../app/dto/content.dto';
+import { ContentType } from '@shared/enum/content-type.enum';
 
 /**
  * Test des différentes routes du PageController
@@ -29,7 +30,9 @@ describe('e2e - PageController', () => {
   it('should create content', async () => {
     createdContent = {
       name: 'page_test',
-      content : '<p> my content {{test}}</p>'
+      description : 'description',
+      content: '<p> my content {{test}}</p>',
+      type: ContentType.ARTICLE
     };
 
     const res = await request(TestServer.getHttpServer()).post('/api/content')

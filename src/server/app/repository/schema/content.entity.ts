@@ -2,6 +2,7 @@ import { IMongoModel } from './mongo-base.schema';
 import { Column, Entity, ObjectID, ObjectIdColumn, PrimaryColumn } from 'typeorm';
 import { ContentType } from '@shared/enum/content-type.enum';
 import { ContentData } from '@shared/interface/content-data.int';
+import { Form } from '@shared/interface/form.int';
 
 @Entity()
 export class ContentEntity implements IMongoModel {
@@ -26,6 +27,9 @@ export class ContentEntity implements IMongoModel {
 
   @Column()
   data?: ContentData;
+
+  @Column()
+  form?: Form;
 
   @Column()
   createdOn?: Date;

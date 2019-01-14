@@ -7,9 +7,9 @@
   <!-- Type -->
   <div class="asi-container">
     <asi-select label="page.content.list.new.modal.type" [data]="contentTypes" formControlName="type">
-      <asi-empty *emptyDef="let data">Please select a value </asi-empty>
-      <asi-selected *selectedDef="let data">{{'enums.contentType.' + data | translate }}</asi-selected>
-      <asi-option *optionDef="let data">{{'enums.contentType.' + data | translate }}</asi-option>
+      <asi-empty *asiEmptyDef="let data">Please select a value </asi-empty>
+      <asi-selected *asiSelectedDef="let data">{{'enums.contentType.' + data | translate }}</asi-selected>
+      <asi-option *asiOptionDef="let data">{{'enums.contentType.' + data | translate }}</asi-option>
     </asi-select>
 
     <asi-error-messages forName="type">

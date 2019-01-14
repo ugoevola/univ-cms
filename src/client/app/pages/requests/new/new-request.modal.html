@@ -15,8 +15,8 @@
   <!-- Method -->
   <div class="asi-container">
       <asi-select label="page.request.list.new.modal.method" [data]="methods" formControlName="method" placeholder="Method">
-        <asi-selected *selectedDef="let data">{{data}}</asi-selected>
-        <asi-option *optionDef="let data">{{data}}</asi-option>
+        <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{data}}</asi-option>
       </asi-select>
       <asi-error-messages forName="method">
         <asi-message error="required" value="validations.required" [onSubmit]="true"></asi-message>

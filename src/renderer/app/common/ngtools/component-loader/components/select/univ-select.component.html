@@ -1,0 +1,11 @@
+<div class="asi-container">
+  <asi-select [label]="label" [multiple]="multiple" [data]="data" [formControlName]="formControlName">
+    <asi-empty *asiEmptyDef="let data">Please select a value
+      <</asi-empty>
+        <asi-selected *asiSelectedDef="let data">{{data.code}}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{data.code}} - {{data.libelle}}</asi-option>
+  </asi-select>
+  <!-- <error-messages forName="myModel">
+      <message error="required" value="Champ obligatoire" [onSubmit]="true"></message>
+    </error-messages> -->
+</div>

@@ -23,11 +23,13 @@ export class LoggerFactory {
         }
       };
 
+      const logLevel = Config.get().LOG_LEVEL;
+
       this.logger = winston.createLogger({
         levels: myCustomLevels.levels,
         transports: [
           new winston.transports.Console({
-            level: Config.get().LOG_LEVEL,
+            level: logLevel,
             format: winston.format.combine(
               winston.format.timestamp(),
               winston.format.colorize(),
